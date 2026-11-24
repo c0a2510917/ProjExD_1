@@ -20,16 +20,27 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        key_lst = pg.key.get_pressed() #練習10-3
-        if key_lst[pg.K_UP]: #練習10-4
-            kk_3_rct.move_ip((0, -1))
-        if key_lst[pg.K_DOWN]: #練習10-4
-            kk_3_rct.move_ip((0, 1))
-        if key_lst[pg.K_RIGHT]: #練習10-4
-            kk_3_rct.move_ip((2, 0)) #演習課題1-2
-        if key_lst[pg.K_LEFT]: #練習10-4
-            kk_3_rct.move_ip((-1, 0))
-        kk_3_rct.move_ip((-1, 0)) #演習課題1-1
+        key_lst = pg.key.get_pressed() #演習課題2
+        rct_xy = [-1, 0]
+        if key_lst[pg.K_UP]:
+            rct_xy[1] = -1
+        if key_lst[pg.K_DOWN]:
+            rct_xy[1] = 1
+        if key_lst[pg.K_RIGHT]:
+            rct_xy[0] = 1
+        if key_lst[pg.K_LEFT]:
+            rct_xy[0] = -2
+        kk_3_rct.move_ip(rct_xy)
+
+        # if key_lst[pg.K_UP]: #練習10-4
+        #     kk_3_rct.move_ip((0, -1))
+        # if key_lst[pg.K_DOWN]: #練習10-4
+        #     kk_3_rct.move_ip((0, 1))
+        # if key_lst[pg.K_RIGHT]: #練習10-4
+        #     kk_3_rct.move_ip((2, 0)) #演習課題1-2
+        # if key_lst[pg.K_LEFT]: #練習10-4
+        #     kk_3_rct.move_ip((-1, 0))
+        # kk_3_rct.move_ip((-1, 0)) #演習課題1-1
 
         x = tmr % 3200 #練習5/練習9
         screen.blit(bg_img, [-x, 0]) #練習5
